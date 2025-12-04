@@ -9,7 +9,7 @@ const swaggerDocument = YAML.load(
   path.join(__dirname, '../DocumentationApi/api.yaml'),
 );
 
-// Swagger UI  /api/docs
+/* Swagger UI  /api/docs*/
 router.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 export default router;
