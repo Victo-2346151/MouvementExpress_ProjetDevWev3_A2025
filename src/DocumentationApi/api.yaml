@@ -1,0 +1,234 @@
+openapi: 3.0.0
+info:
+  title: API Mouvements Projet Final Dev Web 3
+  version: 1.0.0
+  description: >
+    API permettant de gérer des mouvements d’entrées et de sorties dans un entrepôt.
+
+servers:
+  - url: http://localhost:3000/api
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    UserLogin:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          example: admin@test.com
+        password:
+          type: string
+          example: '1234'
+
+    Mouvement:
+      type: object
+      required:
+        - reference
+        - typeOperation
+        - produit
+        - entrepot
+        - quantite
+        - urgent
+        - dateOperation
+      properties:
+        reference:
+          type: string
+          example: 'MVT-2025-0001'
+        typeOperation:
+          type: string
+          enum: [entree, sortie]
+        produit:
+          type: string
+          example: 'Écran Dell 24 pouces'
+        entrepot:
+          type: string
+          example: 'Central'
+        quantite:
+          type: integer
+          example: 50
+        urgent:
+          type: boolean
+          example: false
+        dateOperation:
+          type: string
+          format: date-time
+          example: '2025-11-01T08:30:00Z'
+        tags:
+          type: array
+          items:
+            type: string
+          example: ['informatique', 'fragile']
+        commentaire:
+          type: string
+          example: 'Réception standard'
+
+paths:
+  /generatetoken:
+    post:
+      tags: [Authentification]
+      summary: Générer un token JWT
+      description: Retourne un token JWT si l'email et le mot de passe sont valides.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+      responses:
+        '200':
+          description: Token généré
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+              example:
+                token: 'eyJhbGciOiJIUzI1NiJ9...'
+        '401':
+          description: Unauthorized
+
+  /mouvements:
+    get:
+      security:
+        - bearerAuth: []
+      tags: [Mouvements]
+      summary: Récupérer tous les mouvements
+      parameters:
+        - name: typeOperation
+          in: query
+          schema:
+            type: string
+        - name: urgent
+          in: query
+          schema:
+            type: boolean
+        - name: entrepot
+          in: query
+          schema:
+            type: string
+        - name: produit
+          in: query
+          schema:
+            type: string
+        - name: dateMin
+          in: query
+          schema:
+            type: string
+        - name: dateMax
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Liste des mouvements
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mouvements:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Mouvement'
+        '401':
+          description: Unauthorized
+
+    post:
+      security:
+        - bearerAuth: []
+      tags: [Mouvements]
+      summary: Ajouter un mouvement
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Mouvement'
+      responses:
+        '201':
+          description: Mouvement créé
+        '400':
+          description: Données invalides
+        '401':
+          description: Unauthorized
+
+  /mouvements/{id}:
+    get:
+      security:
+        - bearerAuth: []
+      tags: [Mouvements]
+      summary: Récupérer un mouvement par ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Mouvement trouvé
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mouvement'
+        '404':
+          description: Introuvable
+        '401':
+          description: Unauthorized
+
+    put:
+      security:
+        - bearerAuth: []
+      tags: [Mouvements]
+      summary: Modifier un mouvement
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Mouvement'
+      responses:
+        '200':
+          description: Mouvement mis à jour
+        '400':
+          description: Données invalides
+        '404':
+          description: Introuvable
+        '401':
+          description: Unauthorized
+
+    delete:
+      security:
+        - bearerAuth: []
+      tags: [Mouvements]
+      summary: Supprimer un mouvement
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Mouvement supprimé
+        '404':
+          description: Introuvable
+        '401':
+          description: Unauthorized

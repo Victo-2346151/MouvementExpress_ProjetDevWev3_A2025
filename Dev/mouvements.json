@@ -1,0 +1,112 @@
+[
+  {
+    "reference": "MVT-2025-0001",
+    "typeOperation": "entree",
+    "produit": "Écran Dell 24 pouces",
+    "entrepot": "Central",
+    "quantite": 50,
+    "urgent": false,
+    "dateOperation": "2025-11-01T08:30:00Z",
+    "tags": ["informatique", "fragile"],
+    "commentaire": "Réception standard"
+  },
+  {
+    "reference": "MVT-2025-0002",
+    "typeOperation": "sortie",
+    "produit": "Clavier Logitech MX",
+    "entrepot": "Ouest",
+    "quantite": 120,
+    "urgent": true,
+    "dateOperation": "2025-11-28T12:00:00Z",
+    "tags": ["informatique", "urgent", "express"],
+    "commentaire": "Commande client urgente"
+  },
+  {
+    "reference": "MVT-2025-0003",
+    "typeOperation": "entree",
+    "produit": "Bureau en bois",
+    "entrepot": "Est",
+    "quantite": 15,
+    "urgent": false,
+    "dateOperation": "2025-11-15T09:00:00Z",
+    "tags": ["meuble"],
+    "commentaire": "Réapprovisionnement"
+  },
+  {
+    "reference": "MVT-2025-0004",
+    "typeOperation": "sortie",
+    "produit": "Chaise ergonomique",
+    "entrepot": "Central",
+    "quantite": 500,
+    "urgent": false,
+    "dateOperation": "2025-11-20T14:30:00Z",
+    "tags": ["mobilier"],
+    "commentaire": "Sortie pour succursale Montréal"
+  },
+  {
+    "reference": "MVT-2025-0005",
+    "typeOperation": "entree",
+    "produit": "Câble HDMI",
+    "entrepot": "Ouest",
+    "quantite": 3000,
+    "urgent": false,
+    "dateOperation": "2025-11-25T11:00:00Z",
+    "tags": ["accessoires"],
+    "commentaire": ""
+  },
+  {
+    "reference": "MVT-2025-0006",
+    "typeOperation": "sortie",
+    "produit": "Serveur HP ProLiant",
+    "entrepot": "Central",
+    "quantite": 5,
+    "urgent": true,
+    "dateOperation": "2025-11-27T15:00:00Z",
+    "tags": ["informatique", "critique", "urgent"],
+    "commentaire": "Transfert vers centre de données"
+  },
+  {
+    "reference": "MVT-2025-0007",
+    "typeOperation": "entree",
+    "produit": "Lampe LED",
+    "entrepot": "Est",
+    "quantite": 150,
+    "urgent": false,
+    "dateOperation": "2025-11-10T07:45:00Z",
+    "tags": ["éclairage"],
+    "commentaire": ""
+  },
+  {
+    "reference": "MVT-2025-0008",
+    "typeOperation": "sortie",
+    "produit": "Disque dur externe 1To",
+    "entrepot": "Central",
+    "quantite": 60,
+    "urgent": true,
+    "dateOperation": "2025-11-29T10:30:00Z",
+    "tags": ["informatique", "expédition", "urgent"],
+    "commentaire": "Livraison express Québec"
+  },
+  {
+    "reference": "MVT-2025-0009",
+    "typeOperation": "entree",
+    "produit": "Chaussures de sécurité",
+    "entrepot": "Ouest",
+    "quantite": 200,
+    "urgent": false,
+    "dateOperation": "2025-11-05T16:00:00Z",
+    "tags": ["EPI"],
+    "commentaire": "Nouvelle commande fournisseur"
+  },
+  {
+    "reference": "MVT-2025-0010",
+    "typeOperation": "sortie",
+    "produit": "Trousse de premiers soins",
+    "entrepot": "Est",
+    "quantite": 80,
+    "urgent": false,
+    "dateOperation": "2025-11-22T13:20:00Z",
+    "tags": ["EPI", "maintenance"],
+    "commentaire": ""
+  }
+]
