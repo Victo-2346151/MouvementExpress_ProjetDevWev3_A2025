@@ -19,13 +19,8 @@ const SERVER_START_MSG =
   try {
     await connectDB();
 
-    server.listen(ENV.Port, (err) => {
-      if (!!err) {
-        logger.err(err.message);
-      } else {
-        logger.info(SERVER_START_MSG);
-      }
-    });
+    const port = process.env.PORT || ENV.Port;
+    server.listen(port);
   } catch (err) {
     logger.err(' Impossible de démarrer le serveur : ' + err);
   }

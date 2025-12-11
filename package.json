@@ -7,7 +7,7 @@
     "clean-install": "rm -rf ./node_modules && rm -r package-lock.json && npm i",
     "dev": "cross-env NODE_ENV=development ts-node ./src",
     "dev:hot": "cross-env nodemon --exec \"npm run dev\" --watch ./src --ext .ts",
-    "start": "NODE_ENV=production node -r ./config.js ./dist",
+    "start": "node dist/index.js",
     "test": "cross-env NODE_ENV=test vitest",
     "type-check": "tsc --noEmit"
   },
