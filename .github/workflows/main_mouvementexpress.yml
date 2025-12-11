@@ -37,7 +37,7 @@ jobs:
             package.json
             package-lock.json
 
-  deploy:
+    deploy:
     runs-on: ubuntu-latest
     needs: build
 
@@ -58,6 +58,11 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_3C70A7FE3C6F41FE9C3D795D12CE1C2C }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_70007F895F154953B1A29E028524E89F }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_E777D1A783564040BE1587F53A0FF602 }}
+
+      - name: Install dependencies on Azure
+        run: |
+          cd $GITHUB_WORKSPACE
+          npm install --production
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
